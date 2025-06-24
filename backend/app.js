@@ -11,27 +11,27 @@ import userRoutes from "./Routers/userRouter.js";
 dotenv.config();
 const app = express();
 
-const port = process.env.PORT;
+const port = process.env.PORT|| 5000;
 connectDB();
 
-const allowedOrigins = [
-  "http://localhost:3000",
-  "https://expense-tracker-app-three-beryl.vercel.app",
-  // add more origins as needed
-];
+// const allowedOrigins = [
+//   "http://localhost:3000",
+//   "https://expense-tracker-app-three-beryl.vercel.app",
+//   // add more origins as needed
+// ];
 
 // Middleware
 app.use(express.json());
-app.use(
-  cors({
-    origin: allowedOrigins,
-    credentials: true,
-    methods: ["GET", "POST", "PUT", "DELETE"],
-  })
-);
 // app.use(
-//   cors()
+//   cors({
+//     origin: allowedOrigins,
+//     credentials: true,
+//     methods: ["GET", "POST", "PUT", "DELETE"],
+//   })
 // );
+app.use(
+  cors()
+);
 app.use(helmet());
 app.use(helmet.crossOriginResourcePolicy({ policy: "cross-origin" }));
 app.use(morgan("dev"));
