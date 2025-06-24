@@ -7,15 +7,11 @@ import helmet from "helmet";
 import morgan from "morgan";
 import transactionRoutes from "./Routers/Transactions.js";
 import userRoutes from "./Routers/userRouter.js";
-import path from "path";
 
-dotenv.config({ path: "./config/config.env" });
+dotenv.config();
 const app = express();
 
 const port = process.env.PORT;
-console.log('PORT is:', process.env.PORT);
-
-
 connectDB();
 
 const allowedOrigins = [
